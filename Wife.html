@@ -1,0 +1,3229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Her Little Universe 💜</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Poppins",sans-serif;
+    color:white;
+    background:#0b0014;
+    overflow-x:hidden;
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+    --purple:#9b5cff;
+    --light-purple:#d8b4fe;
+    --deep-purple:#17002b;
+    --dark:#08000f;
+    --brown:#704b3a;
+    --green:#477a54;
+    --pink:#f3b6e8;
+}
+
+
+/* =========================================================
+   LOADING SCREEN
+========================================================= */
+
+#loader{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #6c2d92,
+            #25003d 45%,
+            #09000f 100%
+        );
+
+    transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease;
+}
+
+#loader.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+
+/* loading stars */
+
+.loader-stars{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+}
+
+.loader-star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 10px #fff;
+    animation:starBlink 2s infinite alternate;
+}
+
+@keyframes starBlink{
+    from{
+        opacity:.2;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.4);
+    }
+}
+
+
+/* tulip */
+
+.loader-tulip{
+    position:relative;
+    width:120px;
+    height:180px;
+
+    animation:
+        loaderFloat 3s ease-in-out infinite;
+
+    filter:
+        drop-shadow(0 0 20px #d8b4fe)
+        drop-shadow(0 0 50px #9b5cff);
+}
+
+
+/* petals */
+
+.loader-petal{
+    position:absolute;
+
+    width:45px;
+    height:80px;
+
+    top:10px;
+
+    border-radius:
+        70% 70% 35% 35%;
+
+    background:
+        linear-gradient(
+            160deg,
+            #f7dcff,
+            #cf73e8 45%,
+            #7d319d
+        );
+
+    box-shadow:
+        inset 0 5px 10px #ffffff55;
+}
+
+.loader-petal.one{
+    left:15px;
+    transform:rotate(-22deg);
+}
+
+.loader-petal.two{
+    left:37px;
+    height:90px;
+    z-index:3;
+}
+
+.loader-petal.three{
+    right:15px;
+    transform:rotate(22deg);
+}
+
+.loader-petal.four{
+    left:27px;
+    top:5px;
+    z-index:4;
+    transform:rotate(-8deg);
+}
+
+.loader-petal.five{
+    right:27px;
+    top:5px;
+    z-index:4;
+    transform:rotate(8deg);
+}
+
+
+/* stem */
+
+.loader-stem{
+    position:absolute;
+
+    width:8px;
+    height:90px;
+
+    left:56px;
+    bottom:5px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #244c2e,
+            #69a86c,
+            #315d3a
+        );
+}
+
+
+/* leaf */
+
+.loader-leaf{
+    position:absolute;
+
+    width:55px;
+    height:25px;
+
+    bottom:35px;
+
+    background:#477a54;
+
+    border-radius:100% 0;
+
+}
+
+.loader-leaf.left{
+    left:10px;
+    transform:rotate(-30deg);
+}
+
+.loader-leaf.right{
+    right:5px;
+    transform:
+        rotate(30deg)
+        scaleX(-1);
+}
+
+
+@keyframes loaderFloat{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(-2deg);
+    }
+
+    50%{
+        transform:
+            translateY(-18px)
+            rotate(2deg);
+    }
+
+}
+
+
+/* loader text */
+
+.loader-title{
+    margin-top:15px;
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:50px;
+
+    color:#f4e5ff;
+
+    text-shadow:
+        0 0 15px white,
+        0 0 35px #d8b4fe,
+        0 0 60px #9b5cff;
+}
+
+.loader-subtitle{
+    margin-top:8px;
+
+    font-size:12px;
+
+    letter-spacing:4px;
+
+    color:#d4c2df;
+}
+
+.loader-line{
+    width:230px;
+    height:4px;
+
+    margin-top:25px;
+
+    border-radius:20px;
+
+    background:#ffffff18;
+
+    overflow:hidden;
+}
+
+.loader-fill{
+    width:0;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #704b3a,
+            #9b5cff,
+            #d8b4fe,
+            #477a54
+        );
+
+    box-shadow:
+        0 0 15px #d8b4fe;
+
+    animation:
+        loading 3.5s forwards;
+}
+
+@keyframes loading{
+    to{
+        width:100%;
+    }
+}
+
+
+/* =========================================================
+   MAGIC CANVAS
+========================================================= */
+
+#magicCanvas{
+    position:fixed;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    pointer-events:none;
+
+    z-index:50;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav{
+    position:fixed;
+
+    top:18px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:1000;
+
+    display:flex;
+    gap:5px;
+
+    padding:8px;
+
+    border:
+        1px solid #ffffff20;
+
+    background:#ffffff0d;
+
+    backdrop-filter:blur(18px);
+
+    border-radius:50px;
+
+    box-shadow:
+        0 0 30px #00000050;
+}
+
+.nav button{
+    border:0;
+
+    background:transparent;
+
+    color:#d6c7df;
+
+    padding:
+        9px 13px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.nav button:hover{
+    color:white;
+
+    background:#9b5cff55;
+
+    box-shadow:
+        0 0 15px #9b5cff66;
+}
+
+@media(max-width:700px){
+
+    .nav{
+        width:95%;
+        overflow-x:auto;
+        justify-content:flex-start;
+    }
+
+    .nav button{
+        white-space:nowrap;
+        font-size:11px;
+    }
+}
+
+
+/* =========================================================
+   MUSIC BUTTON
+========================================================= */
+
+.music-button{
+    position:fixed;
+
+    right:20px;
+    bottom:20px;
+
+    z-index:1000;
+
+    width:58px;
+    height:58px;
+
+    border:
+        1px solid #ffffff30;
+
+    border-radius:50%;
+
+    background:#9b5cff66;
+
+    color:white;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+        0 0 25px #9b5cff77;
+
+    transition:.3s;
+}
+
+.music-button:hover{
+    transform:scale(1.12);
+
+    box-shadow:
+        0 0 40px #d8b4fe;
+}
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+section{
+    position:relative;
+
+    min-height:100vh;
+
+    padding:
+        130px 20px;
+
+    overflow:hidden;
+}
+
+.section-inner{
+    width:min(1100px,95%);
+
+    margin:auto;
+
+    position:relative;
+
+    z-index:10;
+}
+
+.section-title{
+    text-align:center;
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:72px;
+
+    color:#f1ddff;
+
+    text-shadow:
+        0 0 15px white,
+        0 0 35px #9b5cff;
+
+    margin-bottom:15px;
+}
+
+.section-subtitle{
+    text-align:center;
+
+    max-width:650px;
+
+    margin:
+        0 auto 60px;
+
+    color:#cbbbd5;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+#home{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #7b35a755,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #07000d,
+            #19002d 60%,
+            #0b0015
+        );
+}
+
+.moon{
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    top:13%;
+    right:12%;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff,
+            #e9dcff 45%,
+            #a88cc5
+        );
+
+    box-shadow:
+        0 0 30px white,
+        0 0 80px #c49cff,
+        0 0 150px #7d45c9;
+
+    animation:
+        moonFloat 5s ease-in-out infinite;
+}
+
+@keyframes moonFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+}
+
+.hero-content{
+    max-width:900px;
+    z-index:10;
+}
+
+.hero-small{
+    letter-spacing:6px;
+
+    color:#d5c3e6;
+
+    font-size:13px;
+}
+
+.hero-title{
+
+    margin-top:15px;
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:
+        clamp(75px,13vw,150px);
+
+    line-height:.9;
+
+    color:white;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 30px #d8b4fe,
+        0 0 70px #9b5cff;
+
+    animation:
+        titlePulse 3s infinite alternate;
+}
+
+@keyframes titlePulse{
+
+    from{
+        filter:brightness(1);
+    }
+
+    to{
+        filter:brightness(1.25);
+    }
+
+}
+
+.hero-text{
+
+    max-width:620px;
+
+    margin:35px auto;
+
+    line-height:1.9;
+
+    color:#ded0e8;
+}
+
+.enter{
+
+    border:
+        1px solid #ffffff35;
+
+    padding:
+        17px 35px;
+
+    border-radius:50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #9b5cffaa,
+            #704b3aaa
+        );
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 20px #9b5cff66;
+
+    transition:.4s;
+}
+
+.enter:hover{
+
+    transform:
+        translateY(-5px)
+        scale(1.05);
+
+    box-shadow:
+        0 0 30px #d8b4fe,
+        0 0 70px #9b5cff;
+}
+
+
+/* =========================================================
+   COLORS
+========================================================= */
+
+#colors{
+
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            #6e45a522,
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #0d0019,
+            #160021
+        );
+}
+
+.color-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:25px;
+}
+
+.color-card{
+
+    min-height:300px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    border-radius:30px;
+
+    border:
+        1px solid #ffffff20;
+
+    background:#ffffff08;
+
+    backdrop-filter:blur(15px);
+
+    transition:.5s;
+}
+
+.color-card:hover{
+
+    transform:
+        translateY(-15px);
+
+    box-shadow:
+        0 20px 60px #00000050,
+        0 0 40px var(--glow);
+}
+
+.color-circle{
+
+    width:110px;
+    height:110px;
+
+    border-radius:50%;
+
+    margin-bottom:25px;
+
+    background:var(--color);
+
+    box-shadow:
+        0 0 20px var(--color),
+        0 0 60px var(--glow);
+
+    animation:
+        orb 3s infinite alternate;
+}
+
+@keyframes orb{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.1);
+    }
+
+}
+
+.color-card h3{
+    font-size:24px;
+}
+
+.color-card p{
+
+    color:#cfc2d8;
+
+    margin-top:10px;
+
+    font-size:14px;
+
+    max-width:230px;
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+#music{
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            #5d238a33,
+            transparent 45%
+        ),
+        #100019;
+}
+
+.music-player{
+
+    width:min(650px,95%);
+
+    margin:auto;
+
+    padding:45px;
+
+    border-radius:35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff0d,
+            #9b5cff12
+        );
+
+    border:
+        1px solid #ffffff20;
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 0 50px #9b5cff22;
+
+    text-align:center;
+}
+
+.album{
+
+    width:190px;
+    height:190px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    border-radius:30px;
+
+    font-size:75px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #704b3a,
+            #9b5cff,
+            #477a54
+        );
+
+    box-shadow:
+        0 0 40px #9b5cff77;
+
+    animation:
+        album 8s linear infinite;
+}
+
+@keyframes album{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+.music-player h3{
+
+    margin-top:30px;
+
+    font-size:28px;
+}
+
+.artist{
+
+    margin-top:5px;
+
+    color:#cbbbd5;
+}
+
+.visualizer{
+
+    height:60px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:5px;
+
+    margin:25px 0;
+}
+
+.bar{
+
+    width:6px;
+    height:20px;
+
+    background:#d8b4fe;
+
+    border-radius:10px;
+
+    animation:
+        bars .7s infinite alternate;
+}
+
+.bar:nth-child(2){animation-delay:.1s}
+.bar:nth-child(3){animation-delay:.2s}
+.bar:nth-child(4){animation-delay:.3s}
+.bar:nth-child(5){animation-delay:.4s}
+.bar:nth-child(6){animation-delay:.2s}
+.bar:nth-child(7){animation-delay:.1s}
+
+@keyframes bars{
+
+    to{
+        height:55px;
+
+        box-shadow:
+            0 0 15px #d8b4fe;
+    }
+
+}
+
+.play{
+
+    width:65px;
+    height:65px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#9b5cff;
+
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 25px #9b5cff;
+
+    transition:.3s;
+}
+
+.play:hover{
+    transform:scale(1.1);
+}
+
+
+/* =========================================================
+   TULIP FARM
+========================================================= */
+
+#flowers{
+
+    min-height:115vh;
+
+    background:
+        linear-gradient(
+            180deg,
+            #12001d,
+            #24152b 45%,
+            #102819
+        );
+}
+
+.garden{
+
+    height:520px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:40px;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            #9b5cff44,
+            transparent 45%
+        ),
+        linear-gradient(
+            180deg,
+            #1a0630,
+            #26182e 55%,
+            #17301e
+        );
+
+    box-shadow:
+        inset 0 0 80px #00000066,
+        0 0 50px #9b5cff22;
+}
+
+
+/* garden moon */
+
+.garden::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:130px;
+    height:130px;
+
+    top:35px;
+    right:8%;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff,
+            #e8ddff 50%,
+            #a88cc5
+        );
+
+    box-shadow:
+        0 0 25px white,
+        0 0 70px #c49cff;
+
+    opacity:.8;
+}
+
+
+/* stars */
+
+.garden::after{
+
+    content:
+        "✦    ✧     ⋆       ✦      ˚     ✧     ⋆";
+
+    position:absolute;
+
+    top:45px;
+    left:5%;
+
+    color:#eadcff;
+
+    font-size:22px;
+
+    letter-spacing:13px;
+
+    animation:
+        starTwinkle 3s infinite alternate;
+}
+
+@keyframes starTwinkle{
+
+    from{
+        opacity:.25;
+    }
+
+    to{
+        opacity:1;
+
+        text-shadow:
+            0 0 15px white;
+    }
+
+}
+
+
+/* =========================================================
+   REALISTIC CSS TULIPS
+========================================================= */
+
+.real-tulip{
+
+    position:absolute;
+
+    bottom:65px;
+
+    width:75px;
+    height:300px;
+
+    transform-origin:
+        bottom center;
+
+    z-index:5;
+
+    animation:
+        tulipSway 4s ease-in-out infinite alternate;
+}
+
+.tulip-one{left:5%}
+.tulip-two{left:16%;animation-delay:.4s;transform:scale(.8)}
+.tulip-three{left:27%;animation-delay:1s;transform:scale(1.08)}
+.tulip-four{left:39%;animation-delay:1.5s;transform:scale(.75)}
+.tulip-five{left:50%;animation-delay:.3s;transform:scale(1.05)}
+.tulip-six{left:62%;animation-delay:1.2s;transform:scale(.85)}
+.tulip-seven{left:74%;animation-delay:1.8s;transform:scale(1.12)}
+.tulip-eight{left:87%;animation-delay:.7s;transform:scale(.8)}
+
+@keyframes tulipSway{
+
+    from{
+        rotate:-3deg;
+    }
+
+    to{
+        rotate:3deg;
+    }
+
+}
+
+
+/* stem */
+
+.tulip-stem{
+
+    position:absolute;
+
+    bottom:0;
+    left:50%;
+
+    width:7px;
+    height:210px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #244c2e,
+            #69a86c,
+            #315d3a
+        );
+
+    box-shadow:
+        0 0 5px #477a54;
+}
+
+
+/* leaves */
+
+.tulip-leaf{
+
+    position:absolute;
+
+    width:75px;
+    height:35px;
+
+    bottom:55px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #315e39,
+            #65a76a
+        );
+
+    border-radius:
+        100% 0 100% 0;
+}
+
+.leaf-left{
+
+    left:-15px;
+
+    transform:
+        rotate(-30deg);
+}
+
+.leaf-right{
+
+    right:-15px;
+
+    transform:
+        rotate(30deg)
+        scaleX(-1);
+}
+
+
+/* flower */
+
+.tulip-flower{
+
+    position:absolute;
+
+    top:0;
+    left:50%;
+
+    width:75px;
+    height:90px;
+
+    transform:
+        translateX(-50%);
+
+    z-index:5;
+}
+
+.tulip-flower span{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:43px;
+    height:75px;
+
+    border-radius:
+        70% 70% 35% 35%;
+
+    background:
+        linear-gradient(
+            160deg,
+            #f8d8ff,
+            #cd70e5 45%,
+            #7c319c
+        );
+
+    box-shadow:
+        inset 0 5px 10px #ffffff55,
+        0 0 15px #b965dc;
+}
+
+.tulip-flower span:nth-child(1){
+
+    left:0;
+
+    transform:
+        rotate(-25deg);
+}
+
+.tulip-flower span:nth-child(2){
+
+    left:12px;
+
+    height:85px;
+
+    transform:
+        rotate(-10deg);
+}
+
+.tulip-flower span:nth-child(3){
+
+    left:20px;
+
+    height:90px;
+
+    z-index:3;
+}
+
+.tulip-flower span:nth-child(4){
+
+    left:30px;
+
+    height:85px;
+
+    transform:
+        rotate(10deg);
+
+    z-index:2;
+}
+
+.tulip-flower span:nth-child(5){
+
+    right:0;
+
+    transform:
+        rotate(25deg);
+}
+
+
+/* pink tulips */
+
+.tulip-two .tulip-flower span,
+.tulip-six .tulip-flower span{
+
+    background:
+        linear-gradient(
+            160deg,
+            #ffdafa,
+            #e98bd0,
+            #9c3c91
+        );
+}
+
+
+/* lighter purple */
+
+.tulip-three .tulip-flower span,
+.tulip-seven .tulip-flower span{
+
+    background:
+        linear-gradient(
+            160deg,
+            #ead7ff,
+            #aa60df,
+            #65268e
+        );
+}
+
+
+/* firefly */
+
+.garden-glow{
+
+    position:absolute;
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 25px #d8b4fe;
+
+    animation:
+        firefly 7s linear infinite;
+}
+
+@keyframes firefly{
+
+    0%{
+        left:10%;
+        top:65%;
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    50%{
+        left:50%;
+        top:30%;
+    }
+
+    80%{
+        left:80%;
+        top:60%;
+        opacity:1;
+    }
+
+    100%{
+        left:100%;
+        top:25%;
+        opacity:0;
+    }
+
+}
+
+
+/* ground */
+
+.ground{
+
+    position:absolute;
+
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:75px;
+
+    z-index:10;
+
+    background:
+        linear-gradient(
+            180deg,
+            #477a54,
+            #1b3822
+        );
+
+    box-shadow:
+        0 -10px 30px #477a5433;
+}
+
+.ground::before{
+
+    content:
+        "🌿  🌱   🌿  🌱   🌿   🌱   🌿  🌱   🌿";
+
+    position:absolute;
+
+    top:-25px;
+
+    left:0;
+
+    width:100%;
+
+    font-size:24px;
+
+    white-space:nowrap;
+
+    opacity:.8;
+}
+
+
+/* =========================================================
+   FOOD
+========================================================= */
+
+#food{
+
+    background:
+        radial-gradient(
+            circle at 30% 50%,
+            #704b3a33,
+            transparent 30%
+        ),
+        #110018;
+}
+
+.food-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:30px;
+
+    max-width:800px;
+
+    margin:auto;
+}
+
+.food-card{
+
+    padding:50px 25px;
+
+    text-align:center;
+
+    border-radius:35px;
+
+    border:
+        1px solid #ffffff20;
+
+    background:#ffffff08;
+
+    backdrop-filter:blur(15px);
+
+    transition:.5s;
+
+    cursor:pointer;
+}
+
+.food-card:hover{
+
+    transform:
+        scale(1.05)
+        rotate(-1deg);
+
+    box-shadow:
+        0 0 40px #9b5cff55;
+}
+
+.food-icon{
+
+    font-size:90px;
+
+    display:block;
+
+    animation:
+        foodFloat 3s infinite ease-in-out;
+}
+
+@keyframes foodFloat{
+
+    50%{
+        transform:
+            translateY(-12px)
+            rotate(5deg);
+    }
+
+}
+
+.food-card h3{
+
+    margin-top:20px;
+
+    font-size:25px;
+}
+
+.food-card p{
+
+    margin-top:10px;
+
+    color:#cdbfd5;
+}
+
+
+/* =========================================================
+   PLACES
+========================================================= */
+
+#places{
+
+    background:
+        linear-gradient(
+            180deg,
+            #110018,
+            #071d17,
+            #061525
+        );
+}
+
+.place-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+}
+
+.place-card{
+
+    min-height:350px;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    flex-direction:column;
+
+    padding:30px;
+
+    cursor:pointer;
+
+    transition:.5s;
+
+    border:
+        1px solid #ffffff20;
+}
+
+.place-card:hover{
+
+    transform:
+        translateY(-12px);
+
+    box-shadow:
+        0 20px 50px #00000066;
+}
+
+.park{
+
+    background:
+        linear-gradient(
+            transparent,
+            #06150baa
+        ),
+        radial-gradient(
+            circle at 50% 20%,
+            #477a54,
+            #173c25
+        );
+}
+
+.mall{
+
+    background:
+        linear-gradient(
+            transparent,
+            #11001dcc
+        ),
+        radial-gradient(
+            circle at 50% 20%,
+            #9b5cff,
+            #32105c
+        );
+}
+
+.seaside{
+
+    background:
+        linear-gradient(
+            transparent,
+            #00111dcc
+        ),
+        linear-gradient(
+            180deg,
+            #51317d,
+            #147d89,
+            #061c28
+        );
+}
+
+.place-icon{
+
+    font-size:65px;
+
+    margin-bottom:15px;
+}
+
+.place-card h3{
+
+    font-size:28px;
+}
+
+.place-card p{
+
+    color:#d9d0df;
+
+    margin-top:8px;
+
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   LETTER
+========================================================= */
+
+#letter{
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            #65249c33,
+            transparent 40%
+        ),
+        #100017;
+}
+
+.envelope{
+
+    width:min(750px,95%);
+
+    margin:auto;
+
+    padding:55px 45px;
+
+    border-radius:35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #704b3a44,
+            #9b5cff22
+        );
+
+    border:
+        1px solid #ffffff20;
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 0 50px #9b5cff22;
+}
+
+.envelope-icon{
+
+    text-align:center;
+
+    font-size:90px;
+
+    animation:
+        envelopeFloat 3s infinite ease-in-out;
+}
+
+@keyframes envelopeFloat{
+
+    50%{
+        transform:
+            translateY(-15px)
+            rotate(3deg);
+    }
+
+}
+
+.envelope h3{
+
+    text-align:center;
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:55px;
+
+    color:#ead6ff;
+}
+
+.letter-text{
+
+    margin-top:35px;
+
+    line-height:2;
+
+    color:#ded2e6;
+
+    font-size:15px;
+}
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+#final{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle,
+            #65249c55,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #100019,
+            #050008
+        );
+}
+
+.final-content{
+
+    position:relative;
+
+    z-index:10;
+}
+
+.final-icon{
+
+    font-size:100px;
+
+    animation:
+        gift 1.5s infinite alternate;
+
+    filter:
+        drop-shadow(
+            0 0 30px #d8b4fe
+        );
+}
+
+@keyframes gift{
+
+    from{
+        transform:
+            rotate(-4deg)
+            scale(1);
+    }
+
+    to{
+        transform:
+            rotate(4deg)
+            scale(1.1);
+    }
+
+}
+
+.final-title{
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:
+        clamp(65px,10vw,100px);
+
+    margin-top:20px;
+
+    text-shadow:
+        0 0 20px white,
+        0 0 50px #9b5cff,
+        0 0 90px #d8b4fe;
+}
+
+.final-text{
+
+    max-width:650px;
+
+    margin:20px auto;
+
+    line-height:1.9;
+
+    color:#d8cce1;
+}
+
+.surprise{
+
+    margin-top:25px;
+
+    padding:
+        16px 30px;
+
+    border:
+        1px solid #ffffff30;
+
+    border-radius:50px;
+
+    background:#9b5cff66;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.surprise:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+        0 0 50px #9b5cff;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    padding:40px 20px;
+
+    text-align:center;
+
+    background:#050008;
+
+    color:#9f91aa;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    .section-title{
+        font-size:55px;
+    }
+
+    .color-grid,
+    .place-grid{
+        grid-template-columns:1fr;
+    }
+
+    .food-grid{
+        grid-template-columns:1fr;
+    }
+
+    .music-player{
+        padding:30px 20px;
+    }
+
+    .album{
+        width:150px;
+        height:150px;
+    }
+
+    .moon{
+        width:90px;
+        height:90px;
+        right:8%;
+    }
+
+    .garden{
+        height:500px;
+    }
+
+    .real-tulip{
+        transform:scale(.62);
+    }
+
+    .tulip-one{left:-3%}
+    .tulip-two{left:10%}
+    .tulip-three{left:23%}
+    .tulip-four{left:36%}
+    .tulip-five{left:49%}
+    .tulip-six{left:62%}
+    .tulip-seven{left:75%}
+    .tulip-eight{left:88%}
+
+    .envelope{
+        padding:40px 25px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     LOADING SCREEN
+======================================================= -->
+
+<div id="loader">
+
+    <div class="loader-stars">
+
+        <span class="loader-star"
+              style="left:10%;top:20%;animation-delay:.2s"></span>
+
+        <span class="loader-star"
+              style="left:25%;top:70%;animation-delay:.8s"></span>
+
+        <span class="loader-star"
+              style="left:42%;top:15%;animation-delay:1.2s"></span>
+
+        <span class="loader-star"
+              style="left:60%;top:75%;animation-delay:.5s"></span>
+
+        <span class="loader-star"
+              style="left:75%;top:25%;animation-delay:1.5s"></span>
+
+        <span class="loader-star"
+              style="left:90%;top:65%;animation-delay:.9s"></span>
+
+    </div>
+
+
+    <!-- CSS TULIP LOADER -->
+
+    <div class="loader-tulip">
+
+        <div class="loader-petal one"></div>
+        <div class="loader-petal two"></div>
+        <div class="loader-petal three"></div>
+        <div class="loader-petal four"></div>
+        <div class="loader-petal five"></div>
+
+        <div class="loader-stem"></div>
+
+        <div class="loader-leaf left"></div>
+        <div class="loader-leaf right"></div>
+
+    </div>
+
+
+    <div class="loader-title">
+        Her Little Universe
+    </div>
+
+    <div class="loader-subtitle">
+        SOMETHING MAGICAL IS WAITING
+    </div>
+
+    <div class="loader-line">
+        <div class="loader-fill"></div>
+    </div>
+
+</div>
+
+
+<!-- =======================================================
+     MAGIC CANVAS
+======================================================= -->
+
+<canvas id="magicCanvas"></canvas>
+
+
+<!-- =======================================================
+     NAVIGATION
+======================================================= -->
+
+<nav class="nav">
+
+    <button onclick="go('home')">
+        Home
+    </button>
+
+    <button onclick="go('colors')">
+        Colors
+    </button>
+
+    <button onclick="go('music')">
+        Music
+    </button>
+
+    <button onclick="go('flowers')">
+        Tulips
+    </button>
+
+    <button onclick="go('food')">
+        Food
+    </button>
+
+    <button onclick="go('places')">
+        Places
+    </button>
+
+    <button onclick="go('letter')">
+        Letter
+    </button>
+
+</nav>
+
+
+<!-- =======================================================
+     MUSIC
+======================================================= -->
+
+<audio id="song" loop>
+
+    <source
+        src="ruin-my-life.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<button
+    class="music-button"
+    id="musicButton"
+    onclick="toggleMusic()">
+
+    🎵
+
+</button>
+
+
+<!-- =======================================================
+     HOME
+======================================================= -->
+
+<section id="home">
+
+    <div class="moon"></div>
+
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            WELCOME TO
+        </div>
+
+
+        <h1 class="hero-title">
+            Her Little Universe
+        </h1>
+
+
+        <p class="hero-text">
+
+            A tiny magical universe made from
+            the little things you love.
+
+            <br>
+
+            Your colors.
+            Your music.
+            Your tulips.
+            Your favorite food.
+            Your favorite places.
+
+            <br><br>
+
+            And most importantly...
+
+            <b>
+                a little piece of my heart.
+            </b>
+            💜
+
+        </p>
+
+
+        <button
+            class="enter"
+            onclick="go('colors')">
+
+            Begin the Journey ✨
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     COLORS
+======================================================= -->
+
+<section id="colors">
+
+    <div class="section-inner">
+
+        <h2 class="section-title">
+            Her Favorite Colors 💜
+        </h2>
+
+        <p class="section-subtitle">
+
+            Purple, brown, and green —
+            three colors that make up
+            a tiny part of her world.
+
+        </p>
+
+
+        <div class="color-grid">
+
+
+            <div
+                class="color-card"
+                style="
+                    --color:#9b5cff;
+                    --glow:#9b5cff;
+                ">
+
+                <div class="color-circle"></div>
+
+                <h3>
+                    Purple 💜
+                </h3>
+
+                <p>
+                    Magical, beautiful,
+                    and a little mysterious.
+                </p>
+
+            </div>
+
+
+            <div
+                class="color-card"
+                style="
+                    --color:#704b3a;
+                    --glow:#a8785d;
+                ">
+
+                <div class="color-circle"></div>
+
+                <h3>
+                    Brown 🤎
+                </h3>
+
+                <p>
+                    Warm, peaceful,
+                    and comforting.
+                </p>
+
+            </div>
+
+
+            <div
+                class="color-card"
+                style="
+                    --color:#477a54;
+                    --glow:#63b875;
+                ">
+
+                <div class="color-circle"></div>
+
+                <h3>
+                    Green 💚
+                </h3>
+
+                <p>
+                    Calm, fresh,
+                    and full of life.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     MUSIC
+======================================================= -->
+
+<section id="music">
+
+    <div class="section-inner">
+
+        <h2 class="section-title">
+            Her Favorite Music 🎵
+        </h2>
+
+        <p class="section-subtitle">
+
+            A little music for her little universe.
+            Press play and let the song fill the room.
+
+        </p>
+
+
+        <div class="music-player">
+
+
+            <div class="album">
+                🎵
+            </div>
+
+
+            <h3>
+                Ruin My Life
+            </h3>
+
+
+            <div class="artist">
+                Her Favorite Song 💜
+            </div>
+
+
+            <div class="visualizer">
+
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+
+            </div>
+
+
+            <button
+                class="play"
+                id="bigMusicButton"
+                onclick="toggleMusic()">
+
+                ▶
+
+            </button>
+
+
+            <p style="
+                margin-top:20px;
+                color:#bcaec8;
+                font-size:13px;
+            ">
+
+                🎧 Tap to play
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     TULIP FARM
+======================================================= -->
+
+<section id="flowers">
+
+    <div class="section-inner">
+
+        <h2 class="section-title">
+            Her Tulip Farm 🌷
+        </h2>
+
+        <p class="section-subtitle">
+
+            If I could give you a whole field
+            of your favorite flowers,
+            it would look something like this.
+
+        </p>
+
+
+        <div class="garden">
+
+
+            <div class="garden-glow"></div>
+
+
+            <!-- TULIP 1 -->
+
+            <div class="real-tulip tulip-one">
+
+                <div class="tulip-flower">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <div class="tulip-stem"></div>
+
+                <div class="tulip-leaf leaf-left"></div>
+                <div class="tulip-leaf leaf-right"></div>
+
+            </div>
+
+
+            <!-- TULIP 2 -->
+
+            <div class="real-tulip tulip-two">
+
+                <div class="tulip-flower">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <div class="tulip-stem"></div>
+
+                <div class="tulip-leaf leaf-left"></div>
+                <div class="tulip-leaf leaf-right"></div>
+
+            </div>
+
+
+            <!-- TULIP 3 -->
+
+            <div class="real-tulip tulip-three">
+
+                <div class="tulip-flower">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <div class="tulip-stem"></div>
+
+                <div class="tulip-leaf leaf-left"></div>
+                <div class="tulip-leaf leaf-right"></div>
+
+            </div>
+
+
+            <!-- TULIP 4 -->
+
+            <div class="real-tulip tulip-four">
+
+                <div class="tulip-flower">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <div class="tulip-stem"></div>
+
+                <div class="tulip-leaf leaf-left"></div>
+                <div class="tulip-leaf leaf-right"></div>
+
+            </div>
+
+
+            <!-- TULIP 5 -->
+
+            <div class="real-tulip tulip-five">
+
+                <div class="tulip-flower">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <div class="tulip-stem"></div>
+
+                <div class="tulip-leaf leaf-left"></div>
+                <div class="tulip-leaf leaf-right"></div>
+
+            </div>
+
+
+            <!-- TULIP 6 -->
+
+            <div class="real-tulip tulip-six">
+
+                <div class="tulip-flower">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <div class="tulip-stem"></div>
+
+                <div class="tulip-leaf leaf-left"></div>
+                <div class="tulip-leaf leaf-right"></div>
+
+            </div>
+
+
+            <!-- TULIP 7 -->
+
+            <div class="real-tulip tulip-seven">
+
+                <div class="tulip-flower">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <div class="tulip-stem"></div>
+
+                <div class="tulip-leaf leaf-left"></div>
+                <div class="tulip-leaf leaf-right"></div>
+
+            </div>
+
+
+            <!-- TULIP 8 -->
+
+            <div class="real-tulip tulip-eight">
+
+                <div class="tulip-flower">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <div class="tulip-stem"></div>
+
+                <div class="tulip-leaf leaf-left"></div>
+                <div class="tulip-leaf leaf-right"></div>
+
+            </div>
+
+
+            <div class="ground"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     FOOD
+======================================================= -->
+
+<section id="food">
+
+    <div class="section-inner">
+
+        <h2 class="section-title">
+            Her Favorite Food 🍕
+        </h2>
+
+        <p class="section-subtitle">
+
+            Because good food makes
+            good memories even better.
+
+        </p>
+
+
+        <div class="food-grid">
+
+
+            <div class="food-card">
+
+                <span class="food-icon">
+                    🍕
+                </span>
+
+                <h3>
+                    Pizza
+                </h3>
+
+                <p>
+                    One slice is never enough.
+                </p>
+
+            </div>
+
+
+            <div class="food-card">
+
+                <span class="food-icon">
+                    🥢
+                </span>
+
+                <h3>
+                    Takoyaki
+                </h3>
+
+                <p>
+                    Little bites of happiness.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     PLACES
+======================================================= -->
+
+<section id="places">
+
+    <div class="section-inner">
+
+        <h2 class="section-title">
+            Her Favorite Places 🌎
+        </h2>
+
+        <p class="section-subtitle">
+
+            Maybe one day,
+            these won't just be favorite places.
+            They'll become our favorite memories.
+
+        </p>
+
+
+        <div class="place-grid">
+
+
+            <div class="place-card park">
+
+                <div class="place-icon">
+                    🌳
+                </div>
+
+                <h3>
+                    Park
+                </h3>
+
+                <p>
+                    Peaceful walks, random conversations,
+                    laughter, and quiet moments together.
+                </p>
+
+            </div>
+
+
+            <div class="place-card mall">
+
+                <div class="place-icon">
+                    🛍️
+                </div>
+
+                <h3>
+                    Mall
+                </h3>
+
+                <p>
+                    Food trips, window shopping,
+                    wandering around, and making
+                    ordinary days memorable.
+                </p>
+
+            </div>
+
+
+            <div class="place-card seaside">
+
+                <div class="place-icon">
+                    🌊
+                </div>
+
+                <h3>
+                    Seaside
+                </h3>
+
+                <p>
+                    Sunset skies, ocean waves,
+                    and moments I would love
+                    to experience with you.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     LOVE LETTER
+======================================================= -->
+
+<section id="letter">
+
+    <div class="section-inner">
+
+        <h2 class="section-title">
+            A Letter For You 💌
+        </h2>
+
+        <p class="section-subtitle">
+
+            Some things are easier to say
+            when they're written from the heart.
+
+        </p>
+
+
+        <div class="envelope">
+
+            <div class="envelope-icon">
+                💌
+            </div>
+
+
+            <h3>
+                My Love 💜
+            </h3>
+
+
+            <div class="letter-text">
+
+                <p>
+                    This little universe may only be made of
+                    colors, songs, flowers, food, and places
+                    you love, but behind every little detail
+                    is one simple reason I wanted to create
+                    something that reminds you of how special
+                    you are to me. 💜
+                </p>
+
+
+                <br>
+
+
+                <p>
+                    I love knowing the little things about you.
+                    Your favorite colors, the songs you enjoy,
+                    the tulips you love, the food that makes
+                    you happy, and the places where you feel
+                    good. They may seem like small things,
+                    but to me, they're pieces of the person
+                    I love.
+                </p>
+
+
+                <br>
+
+
+                <p>
+                    You are more than just someone I love.
+                    You're someone I want to keep making
+                    memories with. I want more random
+                    conversations, more laughs, more adventures,
+                    more food trips, more sunsets, and more
+                    ordinary days that somehow become special
+                    just because I'm spending them with you.
+                </p>
+
+
+                <br>
+
+
+                <p>
+                    I may not always have the perfect words,
+                    and I may not always know exactly what
+                    to do, but one thing I hope you never
+                    doubt is how much you mean to me.
+                </p>
+
+
+                <br>
+
+
+                <p>
+                    No matter where life takes us, I hope
+                    we continue choosing each other,
+                    supporting each other, and creating our
+                    own little memories along the way.
+                </p>
+
+
+                <br>
+
+
+                <p>
+                    I love you, always. 💜✨
+                </p>
+
+
+                <br>
+
+
+                <p style="
+                    text-align:right;
+                    font-family:'Great Vibes',cursive;
+                    font-size:32px;
+                    color:#d8b4fe;
+                ">
+
+                    Forever yours,<br>
+
+                    Husband 🧡
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     FINAL
+======================================================= -->
+
+<section id="final">
+
+    <div class="final-content">
+
+        <div class="final-icon">
+            🎁
+        </div>
+
+
+        <h2 class="final-title">
+            Just For You
+        </h2>
+
+
+        <p class="final-text">
+
+            Out of all the colors,
+            songs, flowers, food,
+            and places in this world...
+
+            <br><br>
+
+            My favorite will always be
+
+            <br>
+
+            <b>
+                You. 💜
+            </b>
+
+        </p>
+
+
+        <button
+            class="surprise"
+            onclick="finalSurprise()">
+
+            One More Surprise ✨
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+    Made with 💜 for my Wifee
+
+    <br><br>
+
+    <span style="color:#d8b4fe;">
+        Forever yours, Maru 🧡
+    </span>
+
+</footer>
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
+<script>
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("loader")
+            .classList.add("hide");
+
+    },4000);
+
+});
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function go(id){
+
+    const section=
+        document.getElementById(id);
+
+    if(section){
+
+        section.scrollIntoView({
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+const song=
+    document.getElementById("song");
+
+const musicButton=
+    document.getElementById("musicButton");
+
+const bigMusicButton=
+    document.getElementById("bigMusicButton");
+
+
+function toggleMusic(){
+
+    if(song.paused){
+
+        song.play()
+        .then(()=>{
+
+            musicButton.innerHTML="⏸️";
+
+            bigMusicButton.innerHTML="⏸";
+
+        })
+        .catch(()=>{
+
+            alert(
+                "Put 'ruin-my-life.mp3' in the same folder as index.html."
+            );
+
+        });
+
+    }
+
+    else{
+
+        song.pause();
+
+        musicButton.innerHTML="🎵";
+
+        bigMusicButton.innerHTML="▶";
+
+    }
+
+}
+
+
+/* =========================================================
+   MAGIC PARTICLES
+========================================================= */
+
+const canvas=
+    document.getElementById("magicCanvas");
+
+const ctx=
+    canvas.getContext("2d");
+
+let width;
+let height;
+
+let particles=[];
+
+
+function resizeCanvas(){
+
+    width=
+        canvas.width=
+        window.innerWidth;
+
+    height=
+        canvas.height=
+        window.innerHeight;
+
+}
+
+resizeCanvas();
+
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+for(let i=0;i<120;i++){
+
+    particles.push({
+
+        x:
+            Math.random()*
+            window.innerWidth,
+
+        y:
+            Math.random()*
+            window.innerHeight,
+
+        size:
+            Math.random()*2+0.5,
+
+        speed:
+            Math.random()*.5+.1,
+
+        alpha:
+            Math.random(),
+
+        twinkle:
+            Math.random()*.03+.01
+
+    });
+
+}
+
+
+function magicAnimation(){
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    particles.forEach(p=>{
+
+        p.y-=p.speed;
+
+        p.alpha+=p.twinkle;
+
+
+        if(
+            p.alpha>=1 ||
+            p.alpha<=0
+        ){
+
+            p.twinkle*=-1;
+
+        }
+
+
+        if(p.y<0){
+
+            p.y=height;
+
+            p.x=
+                Math.random()*width;
+
+        }
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.size,
+            0,
+            Math.PI*2
+        );
+
+
+        ctx.fillStyle=
+            `rgba(
+                216,
+                180,
+                254,
+                ${p.alpha}
+            )`;
+
+
+        ctx.shadowBlur=15;
+
+        ctx.shadowColor="#c084fc";
+
+        ctx.fill();
+
+    });
+
+
+    requestAnimationFrame(
+        magicAnimation
+    );
+
+}
+
+magicAnimation();
+
+
+/* =========================================================
+   CLICK SPARKLES
+========================================================= */
+
+document.addEventListener(
+    "click",
+    e=>{
+
+        createSparkles(
+            e.clientX,
+            e.clientY
+        );
+
+    }
+);
+
+
+function createSparkles(x,y){
+
+    for(let i=0;i<10;i++){
+
+        const sparkle=
+            document.createElement("div");
+
+        sparkle.innerHTML=
+            [
+                "✦",
+                "✧",
+                "💜",
+                "✨"
+            ][
+                Math.floor(
+                    Math.random()*4
+                )
+            ];
+
+
+        sparkle.style.position=
+            "fixed";
+
+        sparkle.style.left=
+            x+"px";
+
+        sparkle.style.top=
+            y+"px";
+
+        sparkle.style.zIndex=
+            "99999";
+
+        sparkle.style.pointerEvents=
+            "none";
+
+        sparkle.style.color=
+            "#d8b4fe";
+
+        sparkle.style.fontSize=
+            (Math.random()*15+10)+"px";
+
+
+        document.body.appendChild(
+            sparkle
+        );
+
+
+        const angle=
+            Math.random()*
+            Math.PI*2;
+
+        const distance=
+            Math.random()*100+40;
+
+
+        const endX=
+            Math.cos(angle)*
+            distance;
+
+        const endY=
+            Math.sin(angle)*
+            distance;
+
+
+        sparkle.animate(
+
+            [
+
+                {
+                    transform:
+                        "translate(-50%,-50%) scale(1)",
+
+                    opacity:1
+                },
+
+                {
+                    transform:
+                        `translate(
+                            ${endX}px,
+                            ${endY}px
+                        ) scale(0)`,
+
+                    opacity:0
+                }
+
+            ],
+
+            {
+
+                duration:900,
+
+                easing:
+                    "cubic-bezier(.2,.8,.3,1)"
+
+            }
+
+        );
+
+
+        setTimeout(
+            ()=>sparkle.remove(),
+            900
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   FINAL SURPRISE
+========================================================= */
+
+function finalSurprise(){
+
+    for(let i=0;i<70;i++){
+
+        setTimeout(()=>{
+
+            createSparkles(
+
+                Math.random()*
+                window.innerWidth,
+
+                Math.random()*
+                window.innerHeight
+
+            );
+
+        },i*25);
+
+    }
+
+
+    setTimeout(()=>{
+
+        alert(
+            "I love you, Wifee. 💜✨\n\nForever yours, Maru 🧡"
+        );
+
+    },1300);
+
+}
+
+</script>
+
+</body>
+</html>
